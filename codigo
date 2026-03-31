@@ -1,0 +1,55 @@
+historico = []
+def calcular():
+    global historico
+
+    num1 = float(input("Seu Primeiro numero? "))
+    operador = input("Digite o operador (+, -, *, /): ")
+    num2 = float(input("Seu Segundo numero? "))
+    
+    if operador == "+":
+        resultado = num1 + num2
+
+    elif operador == "-":
+        resultado = num1 - num2
+
+    elif operador == "*":
+        resultado = num1 * num2
+    
+    elif operador == "/":
+        if num2 == 0:
+            print("Erro Divisao por 0.")
+            return
+        resultado = num1 / num2
+    
+    else:
+        print("Nao foi reconhecido o seu operador, Tente novamente")
+        return
+
+    historico.append(f"{num1} {operador} {num2} = {resultado}")
+    
+    print(f"Resultado: {resultado}")
+
+while True:
+    print("\n" + "="*30)
+    print("      CALCULADORA PYTHON")
+    print("="*30)
+    
+    print("[1] - Calcular")
+    print("[2] - Historico")
+    print("[3] - SAIR")
+
+    opçao = input("Digite sua escolha: ")
+
+    if opçao == "1":
+        calcular()
+    elif opçao == "2":
+        print("\n" + "="*30)
+        print("      HISTÓRICO")
+        print("="*30)
+
+    if not historico:
+        print("Nenhuma conta ainda.")
+    else:
+        for item in historico:
+            print(item)
+        input("\nPressione ENTER para voltar...")
